@@ -82,9 +82,12 @@ export default function SignInScreen() {
   <Text style={styles.forgotPasswordText}>Forgot your password ?</Text>
 </TouchableOpacity>
 
-          <TouchableOpacity style={styles.signInButton}>
-            <Text style={styles.signInButtonText}>Sign in</Text>
-          </TouchableOpacity>
+         <TouchableOpacity 
+  style={styles.signInButton}
+  onPress={() => router.replace('/home' as any)}
+>
+  <Text style={styles.signInButtonText}>Sign In</Text>
+</TouchableOpacity>
 
           <TouchableOpacity style={styles.fingerprintButton}>
             <Ionicons name="finger-print" size={38} color="#2E3A8C" />
@@ -93,6 +96,7 @@ export default function SignInScreen() {
           <View style={styles.bottomRow}>
             <Text style={styles.bottomText}>Don't have an account? </Text>
             <TouchableOpacity onPress={() => router.push('/signup')}>
+              
               <Text style={styles.signUpText}>Sign Up</Text>
             </TouchableOpacity>
           </View>
