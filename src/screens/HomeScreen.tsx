@@ -2,12 +2,12 @@ import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import {
-    ScrollView,
-    StatusBar,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -27,6 +27,7 @@ const CATEGORIES = [
     iconFamily: 'Ionicons',
     color: '#FF4267',
     bg: '#FFEBF0',
+
   },
   {
     id: '3',
@@ -160,11 +161,16 @@ export default function HomeScreen() {
         {/* Сетка категорий 3x3 */}
         <View style={styles.categoriesGrid}>
           {CATEGORIES.map((cat) => (
-            <TouchableOpacity 
-              key={cat.id} 
-              style={styles.categoryItem}
-              activeOpacity={0.7}
-            >
+  <TouchableOpacity
+    key={cat.id}
+    style={styles.categoryItem}
+    activeOpacity={0.7}
+    onPress={() => {
+      if (cat.id === '2') {
+        router.push('/transfer' as any); // ✅ открывает экран перевода
+      }
+    }}
+  >
               <View style={[styles.categoryIconWrap, { backgroundColor: cat.bg }]}>
                 {renderCategoryIcon(cat)}
               </View>
@@ -191,15 +197,11 @@ export default function HomeScreen() {
         </TouchableOpacity>
 
         <TouchableOpacity 
-          style={styles.tabButton} 
-          onPress={() => setActiveTab('search')}
-        >
-          <Ionicons 
-            name="search-outline" 
-            size={22} 
-            color={activeTab === 'search' ? '#3629B7' : '#898989'} 
-          />
-        </TouchableOpacity>
+  style={styles.tabButton} 
+  onPress={() => router.push('/search' as any)}
+>
+  <Ionicons name="search-outline" size={22} color="#898989" />
+</TouchableOpacity>
 
         <TouchableOpacity 
           style={styles.tabButton} 
